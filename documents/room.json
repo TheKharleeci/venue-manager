@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Room Orange",
+        "roomNumber": 21,
+        "venueId": 1,
+        "pricePerChannel": [
+            {
+                "channel": 2,
+                "hourlyPrice": 300
+            },
+            {
+                "channel": 1,
+                "hourlyPrice": 100
+            },
+            {
+                "channel": 3,
+                "hourlyPrice": 150
+            }
+        ]
+    },
+    {
+        "name": "Room Lemon",
+        "roomNumber": 18,
+        "venueId": 1,
+        "pricePerChannel": [
+            {
+                "channel": 1,
+                "hourlyPrice": 170
+            },
+            {
+                "channel": 2,
+                "hourlyPrice": 250
+            },
+            {
+                "channel": 3,
+                "hourlyPrice": 100
+            }
+        ]
+    },
+    {
+        "name": "Room Apple",
+        "venueId": 2,
+        "pricePerChannel": [
+            {
+                "channel": 1,
+                "hourlyPrice": 500
+            },
+            {
+                "channel": 3,
+                "hourlyPrice": 700
+            }
+        ]
+    }
+]

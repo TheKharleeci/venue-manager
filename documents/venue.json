@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Oriental",
+        "location": "Helsinki",
+        "venueId": 1,
+        "description": null,
+        "visibility": [
+            {
+                "channel": 1,
+                "isVisible": true
+            },
+            {
+                "channel": 2,
+                "isVisible": false
+            },
+            {
+                "channel": 3,
+                "isVisible": true
+            }
+        ]
+    },
+    {
+        "name": "Protea",
+        "location": "Helsinki",
+        "venueId": 2,
+        "description": null,
+        "visibility": [
+            {
+                "channel": 1,
+                "isVisible": true
+            },
+            {
+                "channel": 2,
+                "isVisible": true
+            },
+            {
+                "channel": 3,
+                "isVisible": false
+            }
+        ]
+    }
+]
