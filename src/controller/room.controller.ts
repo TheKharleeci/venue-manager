@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import HttpException from '@/utils/exceptions/http.exception';
+import * as responseHandler from '@/utils/exceptions/responseHandler';
 import RoomService from '@/services/room.service';
+import HttpException from '@/utils/exceptions/http.exception';
 
 class RoomController {
     private RoomService = new RoomService();
@@ -21,8 +22,8 @@ class RoomController {
             const response = await this.RoomService.fetchRoomPriceByChannel(id, channelId);
             res.status(200).json({ response })
         } catch (error) {
-            console.log(error)
-            next(new HttpException(400, 'Cannot fetch price'))
+            next(new HttpException(500, 'unauthorised'));
+            return responseHandler.error(res, 'Bad request', 400);
         }
     }
 }

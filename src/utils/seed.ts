@@ -12,7 +12,7 @@ const seedRooms = async () => {
 
   if(!rooms) {       
       const roomData = JSON.parse(
-          await readFile('./documents/room.json', 'utf-8')
+          await readFile('./src/documents/room.json', 'utf-8')
         );
           await Room.insertMany(roomData)
           .then(() => {
@@ -30,7 +30,7 @@ const seedVenues = async () => {
 
     if(!venues) {       
         const venueData = JSON.parse(
-            await readFile('./documents/venue.json', 'utf-8')
+            await readFile('./src/documents/venue.json', 'utf-8')
           );
             await Venue.insertMany(venueData)
             .then(() => {
@@ -48,7 +48,7 @@ const seedChannels = async () => {
 
     if(!channels) {       
         const channelData = JSON.parse(
-            await readFile('./documents/channel.json', 'utf-8')
+            await readFile('./src/documents/channel.json', 'utf-8')
           );
           await Channel.insertMany(channelData)
           .then(() => {                

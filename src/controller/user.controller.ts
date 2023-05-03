@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import HttpException from '@/utils/exceptions/http.exception';
+import * as responseHandler from '@/utils/exceptions/responseHandler';
 import UserService from '@/services/user.service';
+import HttpException from '@/utils/exceptions/http.exception';
 
 class UserController {
     private UserService = new UserService();
@@ -21,7 +22,7 @@ class UserController {
             const token = await this.UserService.signUp(name, email, password );
             res.status(201).json({ token })
         } catch (error) {
-            next(new HttpException(400, 'Cannot register user here'))
+            return next(responseHandler.error(res, 'Error registering user'));
         }
     }
 
@@ -38,10 +39,11 @@ class UserController {
     ): Promise<Response |void> => {
         try {
             const { email, password } = req.body;
-            const token = await this.UserService.login(email, password);
+            const token = await this.UserService.login(email.toLowerCase(), password);
             res.status(200).json({ token })
         } catch (error) {
-            next(new HttpException(400, 'Cannot login user'))
+            next(new HttpException(500, 'unauthorised'))
+            return responseHandler.error(res, 'Error signing in User');
         }
     }
 }

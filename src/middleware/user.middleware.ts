@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import UserService from '@/services/user.service';
+import * as responseHandler from '@/utils/exceptions/responseHandler';
 import HttpException from '@/utils/exceptions/http.exception';
 
 class UserMiddleware {
@@ -19,9 +20,10 @@ class UserMiddleware {
         try {
             const { email } = req.body;
             const user = await this.UserService.getUserByEmail(email.toLowerCase());
-            return user ? next(new HttpException(400, 'User already exists')) : next();
+            return user ? next(responseHandler.info(res, 'Bad Request', 400)) : next();
         } catch (error) {
-            next(new HttpException(400, 'Cannot verify if user exists'))
+            next(new HttpException(500, 'unauthorised'));
+            return responseHandler.error(res, 'Error validating User');
         }
     }
 }

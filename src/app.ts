@@ -34,15 +34,15 @@ class App {
         }
     
     private initialiseErrorHandling(): void {
-            this.express.use(ErrorMiddleware);
+           this.express.use(ErrorMiddleware);
         }
     
     private initialiseDatabaseConnection(): void {
-            const { MONGO_URL } = process.env;
+            const { MONGO_URI } = process.env;
             mongoose.set('strictQuery', false);
-            mongoose.connect(`${MONGO_URL}`)
+            mongoose.connect(`${MONGO_URI}`)
             .then( async () => {
-                console.log(`Connected to mongo ${MONGO_URL} server`);
+                console.log(`Connected to mongo ${MONGO_URI} server`);
                 await seedChannels();
             })
             .catch(err => console.error(`Could not connect to MongoDB. ${err}`));
