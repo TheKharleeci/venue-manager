@@ -22,6 +22,7 @@ class UserController {
             const token = await this.UserService.signUp(name, email, password );
             res.status(201).json({ token })
         } catch (error) {
+            next(new HttpException(500, 'Something went wrong'))
             return next(responseHandler.error(res, 'Error registering user'));
         }
     }
@@ -42,7 +43,7 @@ class UserController {
             const token = await this.UserService.login(email.toLowerCase(), password);
             res.status(200).json({ token })
         } catch (error) {
-            next(new HttpException(500, 'unauthorised'))
+            next(new HttpException(500, 'Something went wrong'))
             return responseHandler.error(res, 'Error signing in User');
         }
     }

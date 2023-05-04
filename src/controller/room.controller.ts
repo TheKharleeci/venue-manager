@@ -22,8 +22,8 @@ class RoomController {
             const response = await this.RoomService.fetchRoomPriceByChannel(id, channelId);
             res.status(200).json({ response })
         } catch (error) {
-            next(new HttpException(500, 'unauthorised'));
-            return responseHandler.error(res, 'Bad request', 400);
+            next(new HttpException(500, 'Something went wrongt'));
+            return responseHandler.error(res, 'Error fetching price');
         }
     }
 }

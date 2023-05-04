@@ -22,7 +22,7 @@ class UserMiddleware {
             const user = await this.UserService.getUserByEmail(email.toLowerCase());
             return user ? next(responseHandler.info(res, 'Bad Request', 400)) : next();
         } catch (error) {
-            next(new HttpException(500, 'unauthorised'));
+            next(new HttpException(500, 'Something went wrong'));
             return responseHandler.error(res, 'Error validating User');
         }
     }
